@@ -1,3 +1,4 @@
+########### Model Information ##########
 connection: "snowlooker"
 label: "1) eCommerce with Event Data"
 
@@ -9,6 +10,10 @@ datagroup: ecommerce_etl {
   ###Can be set to match your etl process
   sql_trigger: SELECT max(completed_at) FROM public.etl_jobs ;;
   max_cache_age: "24 hours"
+}
+
+named_value_format: large_numbers {
+  value_format: "[>=1000000]#,###.00,,\"M\";[>=1000]0.00,\"K\";0"
 }
 
 persist_with: ecommerce_etl
